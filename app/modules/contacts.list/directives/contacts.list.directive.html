@@ -9,9 +9,9 @@
         <div class="contact"
              ng-class="{'selected': isSelectedContact(contact)}"
              ng-repeat="contact in contacts.list | filter:search.value track by $index"
-             ng-click="selectContact(contact);" title="{{contact.firstName && contact.lastName ? contact.firstName + ' ' + contact.lastName : 'No Name'}}">
-            <div ng-show="!contact.firstName && !contact.lastName " class="contact-name empty">No Name</div>
-            <div ng-show="contact.firstName || contact.lastName" class="contact-name" ng-bind-html="contact | searchfilter: search.value"></div>
+             ng-click="selectContact(contact);" title="{{contact.firstName.value && contact.lastName.value ? contact.firstName.value + ' ' + contact.lastName.value : 'No Name'}}">
+            <div ng-show="!contact.firstName.value && !contact.lastName.value " class="contact-name empty">No Name</div>
+            <div ng-show="(contact.firstName && contact.firstName.value) || (contact.lastName && contact.lastName.value)" class="contact-name" ng-bind-html="contact | searchfilter: search.value"></div>
         </div>
     </div>
 </div>

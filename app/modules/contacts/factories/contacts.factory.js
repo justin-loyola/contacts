@@ -26,7 +26,6 @@
             function Contacts() {
                 this.contactsList = ContactsListService.getContacts();
                 this.contactsEditPane = ContactsEditPaneService.getPane();
-                this.selectedContact = null;
             }
             
             return Contacts;    
