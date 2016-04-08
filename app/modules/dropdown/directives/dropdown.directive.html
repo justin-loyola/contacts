@@ -1,0 +1,20 @@
+<div class="dropdown">
+    <!--<button class="dropdown-button" ng-click="open();">-->
+        <!--Dropdown-->
+    <!--</button>-->
+    <button type="button" class="btn add dropdown-button" ng-click="open();"><i class="ionicons ion-ios-plus-empty"></i></button>
+    <ul class="dropdown-menu" ng-class="{'open': show === true}">
+        <li class="dropdown-item"
+            ng-repeat="item in dropdown.menu track by $index"
+            ng-click="item.clickHandler();"
+            ng-class="{'divider': item.divider === true, 'disabled': item.disabled === true}">
+            {{item.text}}
+            <span ng-show="item.menu" class="more"><i class="ionicons ion-arrow-right-b"></i></span>
+            <ul ng-show="item.menu" class="dropdown-menu sub-menu">
+                <li ng-repeat="subItem in item.menu track by $index" class="dropdown-item" ng-click="subItem.clickHandler();">
+                    {{subItem.text}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

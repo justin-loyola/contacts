@@ -1,0 +1,34 @@
+$break-small: 1024px;
+$border-color: rgba(232, 232, 232, 1.0);
+$border-color-light: rgba(205, 205, 205, 1.0);
+$divider-color: rgba(188, 191, 198, 1.0);
+$active-color: rgba(33, 104, 214, 1.0);
+$text-link: rgba(41, 121, 252, 1.0);
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}

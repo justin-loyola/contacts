@@ -1,0 +1,17 @@
+<div class="contacts-list">
+    <div class="search">
+        <input type="text" ng-model="search.value" placeholder="&#xf4a4; Search">
+        <div class="clear-container">
+            <button class="btn clear" ng-click="clear();"><i class="ionicons ion-ios-close"></i></button>
+        </div>
+    </div>
+    <div class="contact-container">
+        <div class="contact"
+             ng-class="{'selected': isSelectedContact(contact)}"
+             ng-repeat="contact in contacts.list | filter:search.value track by $index"
+             ng-click="selectContact(contact);" title="{{contact.firstName && contact.lastName ? contact.firstName + ' ' + contact.lastName : 'No Name'}}">
+            <div ng-show="!contact.firstName && !contact.lastName " class="contact-name empty">No Name</div>
+            <div ng-show="contact.firstName || contact.lastName" class="contact-name" ng-bind-html="contact | searchfilter: search.value"></div>
+        </div>
+    </div>
+</div>
