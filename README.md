@@ -26,5 +26,5 @@ The Contacts object is the top level object which is composed of a Contacts List
 The Contacts List object is composed of Contact Person objects. The Contact Edit Pane object is composed of one Contact Person object.
 The Contact Person object is composed of a collection of Contact Field objects.
 
-All of the objects communicate with each other using Angular best practices -- following a typical MVVC design pattern. Controllers are intentionally
+All of the objects communicate with each other using Angular best practices -- following a typical MVVM design pattern. Controllers are intentionally
 thin objects that delegate to service layer objects. Service objects manipulate the underlying models produced by factories.
