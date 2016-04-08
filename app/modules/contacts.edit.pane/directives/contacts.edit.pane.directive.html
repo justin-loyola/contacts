@@ -1,5 +1,8 @@
 <div class="contacts-edit-pane">
     <div class="contacts-edit-pane-container">
+        <div class="emptyContact" ng-if="!selectedContact">
+            No Cards
+        </div>
         <form name="editableContact" editable-form shown="false" class="contact-details" onbeforesave="isValid();">
             <div class="field name" ng-show="!selectedContact.company.value">
                 <div class="value">

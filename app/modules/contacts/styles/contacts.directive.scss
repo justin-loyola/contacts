@@ -129,6 +129,12 @@
     }
   }
   .contacts-edit-pane {
+    .emptyContact {
+      height: 100%;
+      margin: auto auto;
+      display: flex;
+      align-items: center;
+    }
     width: 75%;
     overflow-y: auto;
     flex: 2 2 75%;
