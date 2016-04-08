@@ -50157,24 +50157,28 @@
 	                        text: 'Phone',
 	                        clickHandler: function() {
 	                            ContactsService.addField(new ContactsField('phone', '', 'Phone'));
+	                            ContactsEditPaneService.setIsEditing(true);
 	                        }
 	                    },
 	                    {
 	                        text: 'Email',
 	                        clickHandler: function() {
 	                            ContactsService.addField(new ContactsField('email', '', 'Email'));
+	                            ContactsEditPaneService.setIsEditing(true);
 	                        }
 	                    },
 	                    {
 	                        text: 'Address',
 	                        clickHandler: function() {
 	                            ContactsService.addField(new ContactsField('home address', '', 'Address'));
+	                            ContactsEditPaneService.setIsEditing(true);
 	                        }
 	                    },
 	                    {
 	                        text: 'Profile',
 	                        clickHandler: function() {
 	                            ContactsService.addField(new ContactsField('profile', '', 'Profile'));
+	                            ContactsEditPaneService.setIsEditing(true);
 	                        }
 	                    },
 	                    {
@@ -50184,12 +50188,14 @@
 	                                text: 'Twitter',
 	                                clickHandler: function() {
 	                                    ContactsService.addField(new ContactsField('twitter', '', 'Twitter'));
+	                                    ContactsEditPaneService.setIsEditing(true);
 	                                }
 	                            },
 	                            {
 	                                text: 'Anniversary',
 	                                clickHandler: function() {
 	                                    ContactsService.addField(new ContactsField('Anniversary', '', 'Month/Day/Year'));
+	                                    ContactsEditPaneService.setIsEditing(true);
 	                                }
 	                            }
 	                        ]
@@ -50216,11 +50222,13 @@
 
 	; // jshint ignore:line
 	(function() {
-	    __webpack_require__(20);
-
 	    'use strict';
 	    
-	    angular.module('ContactsApp.factories.contacts.person', [])
+	    __webpack_require__(20);
+	    
+	    angular.module('ContactsApp.factories.contacts.person', [
+	        'ContactsApp.factories.contacts.field'
+	    ])
 	        .factory('ContactPerson', function(ContactsField) {
 	            /**
 	             *
@@ -50239,39 +50247,6 @@
 	                this.lastName = new ContactsField('Last', '', 'Last', {
 	                    iterate: false
 	                });
-	                // /**
-	                //  * @type {Boolean}
-	                //  */
-	                // this.company = new ContactsField('Company', false, null, {
-	                //     iterate: false
-	                // });
-	                // /**
-	                //  * @type {String|null}
-	                //  */
-	                // this.companyName = new ContactsField(null, null, null, {
-	                //     iterate: false
-	                // });
-	                // /**
-	                //  * @type {String|null}
-	                //  */
-	                // this.mobilePhone = new ContactsField('mobile', '', 'Phone');
-	                // /**
-	                //  * @type {String|null}
-	                //  */
-	                // this.homePhone = new ContactsField('home', '', 'Phone');
-	                // /**
-	                //  * @type {String|null}
-	                //  */
-	                // this.homePage = new ContactsField('home page', '', 'URL');
-	                // /**
-	                //  * UTC timestamp
-	                //  * @type {Number|null}
-	                //  */
-	                // this.birthday = new ContactsField('birthday', '', 'Month/Day/Year');
-	                // /**
-	                //  * @type {String|null}
-	                //  */
-	                // this.homeAddress = new ContactsField('address', '', 'Address');
 	            }
 
 	            ContactPerson.prototype.addField = function(field) {
