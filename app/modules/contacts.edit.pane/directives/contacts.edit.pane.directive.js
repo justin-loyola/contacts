@@ -29,7 +29,7 @@
                             return x === false || x === null;
                         });
                     };
-
+                    
                     $scope.$watch(function() {
                         return ContactsListService.getSelectedContact();
                     }, function(newValue) {

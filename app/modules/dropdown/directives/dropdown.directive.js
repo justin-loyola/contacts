@@ -4,13 +4,15 @@
     
     require('../factory/dropdown.factory');
     require('../factory/dropdown.item.factory');
+    require('../../contacts.edit.pane/providers/dropdown.default.menu.provider');
     var templateUrl = require('./dropdown.directive.html');
 
     angular.module('ContactsApp.directives.dropdown', [
             'ContactsApp.factories.dropdown',
-            'ContactsApp.factories.dropdown.item'
+            'ContactsApp.factories.dropdown.item',
+            'ContactsApp.providers.dropdown.default.menu'
         ])
-        .directive('dropdown', function($timeout) {
+        .directive('dropdown', function($timeout, defaultEditMenu) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -28,67 +30,7 @@
                 },
                 link: function(scope, element) {
                     scope.show = false;
-                    scope.dropdown = {
-                        menu: [
-                            {
-                                text: 'New Contact',
-                                clickHandler: function() {
-                                    console.log('new contact');
-                                }
-                            },
-                            {
-                                divider: true
-                            },
-                            {
-                                text: 'Add Field to Card:',
-                                disabled: true
-                            },
-                            {
-                                text: 'Phone',
-                                clickHandler: function() {
-                                    console.log('phone');
-                                }
-                            },
-                            {
-                                text: 'Email',
-                                clickHandler: function() {
-                                    console.log('email');
-                                }
-                            },
-                            {
-                                text: 'Address',
-                                clickHandler: function() {
-                                    console.log('address');
-                                }
-                            },
-                            {
-                                text: 'Profile',
-                                clickHandler: function() {
-                                    console.log('profile');
-                                }
-                            },
-                            {
-                                text: 'More Options',
-                                menu: [
-                                    {
-                                        text: 'Twitter',
-                                        clickHandler: function() {
-                                            console.log('phone');
-                                        }
-                                    },
-                                    {
-                                        text: 'Anniversary',
-                                        clickHandler: function() {
-                                            console.log('phone');
-                                        }
-                                    }
-                                ],
-                                clickHandler: function() {
-                                    console.log('more');
-                                }
-                            }
-                        ]
-                    };
+                    scope.dropdown = defaultEditMenu;
 
                     $timeout(function() {
                         var dropdownHeight = element[0].offsetHeight;
