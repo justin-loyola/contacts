@@ -1,13 +1,24 @@
 ; // jshint ignore:line
 (function() {
     'use strict';
-    angular.module('ContactsApp.providers.dropdown.default.menu', [])
-        .provider('defaultEditMenu', function() {
+
+    require('../services/contacts.edit.pane.service');
+    require('../../contacts/services/contacts.service');
+    require('../../contacts.list/services/contacts.list.service');
+    require('../../contact.person/factories/contacts.person.factory');
+
+    angular.module('ContactsApp.providers.dropdown.default.menu', [
+        'ContactsApp.factories.contacts.person'
+    ])
+        .provider('defaultEditMenu', function(ContactsServiceProvider, ContactsEditPaneServiceProvider, ContactsListServiceProvider, ContactPersonProvider) {
             this.menu = [
                 {
                     text: 'New Contact',
                     clickHandler: function() {
-                        console.log('new contact');
+                        var contact = new ContactPerson();
+                        ContactsService.addContact(contact);
+                        ContactsEditPaneService.setIsEditing(true);
+                        ContactsListService.setSelectedContact(contact);
                     }
                 },
                 {

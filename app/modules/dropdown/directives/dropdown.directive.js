@@ -17,6 +17,9 @@
                 restrict: 'E',
                 replace: true,
                 templateUrl: templateUrl,
+                scope: {
+                    menu: '='    
+                },
                 controller: function($scope) {
                     $scope.open = function() {
                         $scope.show = !$scope.show;
@@ -28,9 +31,9 @@
                         }
                     };
                 },
-                link: function(scope, element) {
+                link: function(scope, element, attrs) {
                     scope.show = false;
-                    scope.dropdown = defaultEditMenu;
+                    scope.dropdown = attrs.menu;
 
                     $timeout(function() {
                         var dropdownHeight = element[0].offsetHeight;

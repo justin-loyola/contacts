@@ -29,7 +29,72 @@
                             return x === false || x === null;
                         });
                     };
-                    
+
+                    $scope.menu = {
+                        menu: [
+                            {
+                                text: 'New Contact',
+                                clickHandler: function() {
+                                    var contact = new ContactPerson();
+                                    ContactsService.addContact(contact);
+                                    ContactsEditPaneService.setIsEditing(true);
+                                    ContactsListService.setSelectedContact(contact);
+                                }
+                            },
+                            {
+                                divider: true
+                            },
+                            {
+                                text: 'Add Field to Card:',
+                                disabled: true
+                            },
+                            {
+                                text: 'Phone',
+                                clickHandler: function() {
+                                    console.log('phone');
+                                }
+                            },
+                            {
+                                text: 'Email',
+                                clickHandler: function() {
+                                    console.log('email');
+                                }
+                            },
+                            {
+                                text: 'Address',
+                                clickHandler: function() {
+                                    console.log('address');
+                                }
+                            },
+                            {
+                                text: 'Profile',
+                                clickHandler: function() {
+                                    console.log('profile');
+                                }
+                            },
+                            {
+                                text: 'More Options',
+                                menu: [
+                                    {
+                                        text: 'Twitter',
+                                        clickHandler: function() {
+                                            console.log('phone');
+                                        }
+                                    },
+                                    {
+                                        text: 'Anniversary',
+                                        clickHandler: function() {
+                                            console.log('phone');
+                                        }
+                                    }
+                                ],
+                                clickHandler: function() {
+                                    console.log('more');
+                                }
+                            }
+                        ]
+                    };
+
                     $scope.$watch(function() {
                         return ContactsListService.getSelectedContact();
                     }, function(newValue) {
