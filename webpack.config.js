@@ -1,7 +1,11 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-    entry: './app/app.js',
+    entry: [
+        'webpack/hot/only-dev-server',
+        './app/app.js'
+    ],
     output: {
         filename: './build/bundle.js'
     },
@@ -43,5 +47,6 @@ module.exports = {
                 loader: "url?limit=10000&mimetype=image/svg+xml"
             }
         ]
-    }
+    },
+    plugins: []
 };

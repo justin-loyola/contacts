@@ -5,7 +5,7 @@
     angular.module('ContactsApp.filters.search', [])
     .filter('searchfilter', function($sce) {
         return function (input, query) {
-            var fullName = input.firstName + ' ' + input.lastName;
+            var fullName = input.firstName.value + ' ' + input.lastName.value;
             if (query === '') {
                 return $sce.trustAsHtml(fullName);
             }

@@ -32,7 +32,7 @@
             this.isEditing = function() {
                 return this.getPane().isEditing();
             };
-
+            
             return this;
         });
 })();

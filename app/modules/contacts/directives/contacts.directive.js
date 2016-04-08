@@ -8,7 +8,6 @@
  * - Responsiveness clean up - some small height issues with the edit pane
  * - Unit tests
  * - Documentation
- * - Deploy
  */
 
 
@@ -31,13 +30,11 @@
         'ContactsApp.factories.contacts',
         'ContactsApp.factories.contacts.person'
     ])
-        .directive('contacts', function(Contacts, ContactPerson) {
+        .directive('contacts', function() {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: templateUrl,
-                controller: function($scope, ContactsService) {
-                }
-            }; 
+                templateUrl: templateUrl
+            };
         });
 })();

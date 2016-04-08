@@ -5,10 +5,19 @@
     
     angular.module('ContactsApp.factories.contacts.field', [])
         .factory('ContactsField', function() {
-            function ContactsField() {
-                this.label = '';
-                this.value = '';
-                this.placeholder = '';
+            /**
+             * 
+             * @param {String} label
+             * @param {*} value
+             * @param {String} placeholder
+             * @param {Object} options
+             * @constructor
+             */
+            function ContactsField(label, value, placeholder, options) {
+                this.label = label;
+                this.value = value;
+                this.placeholder = placeholder;
+                this.options = options;
             }
             
             return ContactsField;

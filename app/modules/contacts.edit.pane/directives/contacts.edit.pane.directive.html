@@ -1,68 +1,24 @@
 <div class="contacts-edit-pane">
     <div class="contacts-edit-pane-container">
         <form name="editableContact" editable-form shown="false" class="contact-details" onbeforesave="isValid();">
-            <div class="field name" ng-show="selectedContact.isCompany() === false;">
+            <div class="field name" ng-show="!selectedContact.company.value">
                 <div class="value">
-                    <span editable-text="selectedContact.firstName" buttons="no" e-placeholder="First">{{selectedContact.firstName}}</span>
-                </div>
-                <div class="value">
-                    <span editable-text="selectedContact.lastName" buttons="no" e-placeholder="Last">{{selectedContact.getLastName();}}</span>
-                </div>
-            </div>
-            <div class="field company-name" ng-show="selectedContact.isCompany() === true;">
-                <div class="value">
-                    <span editable-text="selectedContact.companyName" buttons="no" e-placeholder="Company">{{selectedContact.getCompanyName();}}</span>
-                </div>
-            </div>
-            <div class="field company" ng-show="editing === true">
-                <div class="value">
-                    <span editable-checkbox="selectedContact.company"></span>
-                </div>
-            </div>
-            <div class="field birthday">
-                <div class="label" ng-class="{'editable': editing === true}">
-                    birthday
+                    <span editable-text="selectedContact.firstName.value" buttons="no" e-placeholder="First">{{selectedContact.firstName.value}}</span>
                 </div>
                 <div class="value">
-                    <span editable-text="selectedContact.birthday" buttons="no" e-placeholder="Month/Day/Year">{{selectedContact.getBirthday();}}</span>
+                    <span editable-text="selectedContact.lastName.value" buttons="no" e-placeholder="Last">{{selectedContact.lastName.value}}</span>
                 </div>
             </div>
-            <div class="field mobile-phone">
-                <div class="label" ng-class="{'editable': editing === true}">
-                    mobile
-                </div>
-                <div class="value">
-                    <span editable-text="selectedContact.mobilePhone" buttons="no" e-placeholder="Phone">{{selectedContact.getMobilePhone();}}</span>
-                </div>
-            </div>
-            <div class="field home-page">
-                <div class="label" ng-class="{'editable': editing === true}">
-                    home page
-                </div>
-                <span class="value">
-                    <span editable-text="selectedContact.homePage" buttons="no" e-placeholder="URL"><a href="{{selectedContact.getHomePage();}}" target="_blank">{{selectedContact.getHomePage();}}</a></span>
-                </span>
-            </div>
-            <div class="field home-address">
-                <div class="label" ng-class="{'editable': editing === true}">
-                    home address
-                </div>
-                <div class="value">
-                    <span editable-text="selectedContact.homeAddress" buttons="no" e-placeholder="Address">{{selectedContact.getHomeAddress();}}</span>
-                </div>
-            </div>
-            {{selectedContact}}
-            <div ng-repeat="field in selectedContact.fields" class="field birthday">
+            <div ng-if="field.options.iterate !== false" ng-repeat="(key, field) in selectedContact" class="field birthday">
                 <div class="label" ng-class="{'editable': editing === true}">
                     {{field.label}}
                 </div>
                 <div class="value">
-                    <span editable-text="field.value" buttons="no" e-placeholder="{{field.placeholder}}">{{selectedContact.value}}</span>
+                    <span editable-text="field.value" buttons="no" e-placeholder="{{field.placeholder}}">{{field.value}}</span>
                 </div>
             </div>
             <div class="toolbar-container">
                 <div class="toolbar">
-                    <!--<button type="button" class="btn add" ng-click="addContact();"><i class="ionicons ion-ios-plus-empty"></i></button>-->
                     <dropdown></dropdown>
                     <button type="submit" class="btn done" ng-show="editing === true" ng-click="done();">Done</button>
                     <button type="button" class="btn edit" ng-show="editing === false" ng-click="editContact()">Edit</button>

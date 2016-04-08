@@ -1,9 +1,11 @@
 ; // jshint ignore:line
 (function() {
+    require('lodash');
+
     'use strict';
     
     angular.module('ContactsApp.factories.contacts.person', [])
-        .factory('ContactPerson', function() {
+        .factory('ContactPerson', function(ContactsField) {
             /**
              *
              * @constructor
@@ -12,41 +14,53 @@
                 /**
                  * @type {String|null}
                  */
-                this.firstName = null;
+                this.firstName = new ContactsField('First', '', 'First', {
+                    iterate: false
+                });
                 /**
                  * @type {String|null}
                  */
-                this.lastName = null;
-                /**
-                 * @type {Boolean}
-                 */
-                this.company = false;
-                /**
-                 * @type {String|null}
-                 */
-                this.companyName = null;
-                /**
-                 * @type {String|null}
-                 */
-                this.mobilePhone = null;
-                /**
-                 * @type {String|null}
-                 */
-                this.homePhone = null;
-                /**
-                 * @type {String|null}
-                 */
-                this.homePage = null;
-                /**
-                 * UTC timestamp
-                 * @type {Number|null}
-                 */
-                this.birthday = null;
-                /**
-                 * @type {String|null}
-                 */
-                this.homeAddress = null;
+                this.lastName = new ContactsField('Last', '', 'Last', {
+                    iterate: false
+                });
+                // /**
+                //  * @type {Boolean}
+                //  */
+                // this.company = new ContactsField('Company', false, null, {
+                //     iterate: false
+                // });
+                // /**
+                //  * @type {String|null}
+                //  */
+                // this.companyName = new ContactsField(null, null, null, {
+                //     iterate: false
+                // });
+                // /**
+                //  * @type {String|null}
+                //  */
+                // this.mobilePhone = new ContactsField('mobile', '', 'Phone');
+                // /**
+                //  * @type {String|null}
+                //  */
+                // this.homePhone = new ContactsField('home', '', 'Phone');
+                // /**
+                //  * @type {String|null}
+                //  */
+                // this.homePage = new ContactsField('home page', '', 'URL');
+                // /**
+                //  * UTC timestamp
+                //  * @type {Number|null}
+                //  */
+                // this.birthday = new ContactsField('birthday', '', 'Month/Day/Year');
+                // /**
+                //  * @type {String|null}
+                //  */
+                // this.homeAddress = new ContactsField('address', '', 'Address');
             }
+
+            ContactPerson.prototype.addField = function(field) {
+                this[field.label] = field;
+            };
 
             /**
              * @param {String|null} name

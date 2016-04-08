@@ -14,7 +14,15 @@
             };
             
             this.setSelectedContact = function(contact) {
-                this.contacts.selectedContact = contact;    
+                this.contacts.contactsList.selectedContact = contact;
+            };
+            
+            this.getSelectedContact = function() {
+                return this.contacts.contactsList.selectedContact;
+            };
+
+            this.addField = function(field) {
+                this.contacts.contactsList.selectedContact.addField(field);
             };
 
             this.addContact = function(contact) {
@@ -24,7 +32,8 @@
             this.removeContact = function(contact) {
                 this.contacts.contactsList.remove(contact);
             };
-            
+
+
             return this;    
         });
 })();
