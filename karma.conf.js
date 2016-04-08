@@ -2,6 +2,7 @@
 // Generated on Fri Apr 08 2016 00:20:45 GMT-0700 (PDT)
 
 require('webpack');
+require('karma-webpack');
 var path = require('path');
 var webpackConfig = require('./webpack.config.js');
 webpackConfig.entry = {};
@@ -20,10 +21,6 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            // 'node_modules/angular/angular.js',
-            // // 'app/**/*.js',
-            './build/bundle.js',
-            // './node_modules/angular-mocks/angular-mocks.js',
             './app/**/*.spec.js'
         ],
 
@@ -31,25 +28,56 @@ module.exports = function(config) {
         // list of files to exclude
         exclude: [
             'webpack.config.js',
-            'karma.conf.js'
+            'karma.conf.js',
+            './coverage'
         ],
 
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './build/bundle.js': ['webpack'],
-            'app/**/*.spec.js': ['webpack'],
-            // 'app/**/*.spec.js': ['webpack']
+            'app/**/*.spec.js': ['webpack', 'coverage'],
+            // 'app/**/*.js': ['webpack']
         },
         webpack: webpackConfig,
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
+        reporters: ['coverage', 'progress', 'html', 'threshold'],
+        htmlReporter: {
+            outputDir: __dirname + '/karma_report',
+            templatePath: __dirname + '/node_modules/karma-html-reporter/jasmine_template.html'
+        },
+        thresholdReporter: {
+            'statements': 0,
+            'branches': 0,
+            'functions': 0,
+            'lines': 0
+        },
+        coverageReporter: {
+            reporters: [
+                {
+                    type: 'html',
+                    dir: './coverage/'
+                },
+                {
+                    type: 'json',
+                    dir: './coverage/'
+                }
+            ]
+        },
 
-
+        plugins: [
+            'karma-phantomjs-launcher',
+            'karma-coverage',
+            'webpack',
+            'karma-webpack',
+            'karma-html-reporter',
+            'karma-threshold-reporter',
+            'karma-jasmine'
+        ],
+        
         // web server port
         port: 9876,
 
