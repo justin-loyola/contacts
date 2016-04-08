@@ -1,10 +1,12 @@
 ; // jshint ignore:line
 (function() {
-    require('lodash');
-
     'use strict';
     
-    angular.module('ContactsApp.factories.contacts.person', [])
+    require('lodash');
+    
+    angular.module('ContactsApp.factories.contacts.person', [
+        'ContactsApp.factories.contacts.field'
+    ])
         .factory('ContactPerson', function(ContactsField) {
             /**
              *
@@ -23,39 +25,6 @@
                 this.lastName = new ContactsField('Last', '', 'Last', {
                     iterate: false
                 });
-                // /**
-                //  * @type {Boolean}
-                //  */
-                // this.company = new ContactsField('Company', false, null, {
-                //     iterate: false
-                // });
-                // /**
-                //  * @type {String|null}
-                //  */
-                // this.companyName = new ContactsField(null, null, null, {
-                //     iterate: false
-                // });
-                // /**
-                //  * @type {String|null}
-                //  */
-                // this.mobilePhone = new ContactsField('mobile', '', 'Phone');
-                // /**
-                //  * @type {String|null}
-                //  */
-                // this.homePhone = new ContactsField('home', '', 'Phone');
-                // /**
-                //  * @type {String|null}
-                //  */
-                // this.homePage = new ContactsField('home page', '', 'URL');
-                // /**
-                //  * UTC timestamp
-                //  * @type {Number|null}
-                //  */
-                // this.birthday = new ContactsField('birthday', '', 'Month/Day/Year');
-                // /**
-                //  * @type {String|null}
-                //  */
-                // this.homeAddress = new ContactsField('address', '', 'Address');
             }
 
             ContactPerson.prototype.addField = function(field) {
